@@ -1,0 +1,24 @@
+type Query {
+    vehicules : [Vehicule],
+    vehiculeById(id:String) : Vehicule,
+    proprietaires: [Proprietaire]
+}
+type Mutation{
+    deleteVehicule(id:String) : String
+}
+type Vehicule{
+  id:ID ,
+  num_matricule :String,
+  marque:String  ,
+  puissance_fescale:Float,
+  modele:String  ,
+  proprietaire : Proprietaire
+
+}
+type Proprietaire{
+    idp  : ID,
+    nom : String
+    date_Naissance:String,
+    email:String,
+    vehicules : [Vehicule]
+}

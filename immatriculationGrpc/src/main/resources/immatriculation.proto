@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+option java_package="org.example.stubs";
+
+message Proprietaire {
+  int32 id = 1;
+  string nom = 2;
+  string date_naissance = 3;
+  string email = 4;
+}
+
+message Vehicule {
+  int32 id = 1;
+  string numero_matricule = 2;
+  string marque = 3;
+  int32 puissance_fiscale = 4;
+  string modele = 5;
+  Proprietaire proprietaire = 6;
+}
+
+message ObtenirProprietaireRequest {
+  int32 id = 1;
+}
+
+message ModifierProprietaireRequest {
+  int32 id = 1;
+  Proprietaire proprietaire = 2;
+}
+
+message SupprimerProprietaireRequest {
+  int32 id = 1;
+}
+
+message SupprimerProprietaireResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ObtenirVehiculeRequest {
+  int32 id = 1;
+}
+
+message ModifierVehiculeRequest {
+  int32 id = 1;
+  Vehicule vehicule = 2;
+}
+
+message SupprimerVehiculeRequest {
+  int32 id = 1;
+}
+
+message SupprimerVehiculeResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+service ImmatriculationService {
+  rpc AjouterProprietaire(Proprietaire) returns (Proprietaire) {}
+  rpc ObtenirProprietaire(ObtenirProprietaireRequest) returns (Proprietaire) {}
+  rpc ModifierProprietaire(ModifierProprietaireRequest) returns (Proprietaire) {}
+  rpc SupprimerProprietaire(SupprimerProprietaireRequest) returns (SupprimerProprietaireResponse) {}
+  rpc AjouterVehicule(Vehicule) returns (Vehicule) {}
+  rpc ObtenirVehicule(ObtenirVehiculeRequest) returns (Vehicule) {}
+  rpc ModifierVehicule(ModifierVehiculeRequest) returns (Vehicule) {}
+  rpc SupprimerVehicule(SupprimerVehiculeRequest) returns (SupprimerVehiculeResponse) {}
+}
