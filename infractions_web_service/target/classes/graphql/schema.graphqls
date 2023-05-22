@@ -1,0 +1,19 @@
+type Query{
+    infractionList : [Infraction],
+    infractionByID(idF : String ) : Infraction
+}
+
+type Mutation {
+    deleteInfraction(idF : String) : String
+}
+
+
+type Infraction{
+    id : ID,
+    date : String ,
+    montantInfraction : Float ,
+    RadarNum :String ,
+    matVehicule :String,
+    vitesse_max_radar :Float,
+    vehiculeId : String
+ }
